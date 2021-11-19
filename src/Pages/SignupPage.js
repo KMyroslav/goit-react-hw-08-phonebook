@@ -10,15 +10,15 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [useSignup, { data }] = useSignupMutation();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        dispatch(useSignup({ name, email, password }));
-        setName("");
-        setEmail("");
-        setPassword("");
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    dispatch(useSignup({ name, email, password }));
+    setName("");
+    setEmail("");
+    setPassword("");
   };
+
   return (
     <div>
       <form name="signup_form" autoComplete="on" onSubmit={handleSubmit}>
