@@ -1,30 +1,34 @@
 import { createReducer, createSlice } from "@reduxjs/toolkit";
 import actions from "./actions";
-import { useSignupMutation } from "./contactsSlice";
 
 export const filterReducer = createReducer("", {
   [actions.setFilter]: (state, action) => action.payload,
 });
 
 const initialState = {
-  user: {
-    name: "",
-    token: "",
-    isLoggedIn: false,
-  },
+  name: "",
+  token: "",
+  isLoggedIn: false,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: {
-    [useSignupMutation.data](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+  reducers: {
+    setCredentials: (state, { payload: { user, token } }) => {
+      state.name = user.name;
+      state.token = token;
       state.isLoggedIn = true;
+    },
+    setLogout: (state, payload) => {
+      state.name = "";
+      state.token = "";
+      state.isLoggedIn = false;
     },
   },
 });
+
+export const { setCredentials, setLogout } = authSlice.actions;
 
 // const todosSlice = createSlice({
 //   name: "todos",

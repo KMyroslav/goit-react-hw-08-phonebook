@@ -4,6 +4,13 @@ export const contactsApi = createApi({
   reducerPath: "contactsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://connections-api.herokuapp.com",
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ["Contacts"],
   endpoints: (builder) => ({
@@ -12,6 +19,19 @@ export const contactsApi = createApi({
         url: "/users/signup",
         method: "POST",
         body: userData,
+      }),
+    }),
+    login: builder.mutation({
+      query: (userData) => ({
+        url: "/users/login",
+        method: "POST",
+        body: userData,
+      }),
+    }),
+    logout: builder.mutation({
+      query: () => ({
+        url: "/users/logout",
+        method: "POST",
       }),
     }),
     getContacts: builder.query({
@@ -38,6 +58,8 @@ export const contactsApi = createApi({
 
 export const {
   useSignupMutation,
+  useLoginMutation,
+  useLogoutMutation,
   useGetContactsQuery,
   useAddContactMutation,
   useDeleteContactMutation,

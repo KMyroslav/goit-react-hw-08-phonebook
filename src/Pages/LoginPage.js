@@ -1,12 +1,23 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../redux/contactsSlice";
+import { setCredentials } from "../redux/reducers";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [useLogin] = useLoginMutation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //signup logic
+    try {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const userData = await useLogin({ email, password }).unwrap();
+      dispatch(setCredentials(userData));
+    } catch (err) {
+      console.log(err);
+    }
     setEmail("");
     setPassword("");
   };

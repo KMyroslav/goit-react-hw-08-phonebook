@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { useSignupMutation } from "../redux/contactsSlice";
 import { useDispatch } from "react-redux";
-import { authSlice } from "../redux/reducers";
+import { setCredentials } from "../redux/reducers";
 
 export default function SignupPage() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [useSignup, { data }] = useSignupMutation();
+  const [useSignup] = useSignupMutation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    dispatch(useSignup({ name, email, password }));
+    try {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const userData = await useSignup({ name, email, password }).unwrap();
+      dispatch(setCredentials(userData));
+    } catch (err) {
+      console.log(err);
+    }
     setName("");
     setEmail("");
     setPassword("");
