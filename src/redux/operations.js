@@ -34,6 +34,9 @@ export const contactsApi = createApi({
         method: "POST",
       }),
     }),
+    getUser: builder.query({
+      query: () => "/users/current",
+    }),
     getContacts: builder.query({
       query: () => `/contacts`,
       providesTags: ["Contacts"],
@@ -60,6 +63,7 @@ export const {
   useSignupMutation,
   useLoginMutation,
   useLogoutMutation,
+  useGetUserQuery,
   useGetContactsQuery,
   useAddContactMutation,
   useDeleteContactMutation,

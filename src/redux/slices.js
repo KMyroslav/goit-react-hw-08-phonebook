@@ -23,6 +23,10 @@ export const authSlice = createSlice({
       state.token = token;
       state.isLoggedIn = true;
     },
+    setUser: (state, payload) => {
+      state.name = payload.name;
+      state.isLoggedIn = true;
+    },
     setLogout: (state, payload) => {
       state.name = "";
       state.token = "";
@@ -32,4 +36,4 @@ export const authSlice = createSlice({
 });
 
 export const { setFilter } = filterSlice.actions;
-export const { setCredentials, setLogout } = authSlice.actions;
+export const { setCredentials, setUser, setLogout } = authSlice.actions;

@@ -2,6 +2,8 @@ const getFilter = (state) => state.filter;
 
 const getIsLoggedIn = (state) => state.auth.isLoggedIn;
 
-const selectors = { getFilter, getIsLoggedIn };
+const getToken = (state) => state.auth.token;
+
+const selectors = { getFilter, getIsLoggedIn, getToken };
 
 export default selectors;
