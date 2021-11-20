@@ -1,10 +1,12 @@
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useLogoutMutation } from "../../redux/contactsSlice";
-import { setLogout } from "../../redux/reducers";
+import selectors from "../../redux/selectors";
+import { useLogoutMutation } from "../../redux/operations";
+import { setLogout } from "../../redux/slices";
 
-function UserMenu({ isLoggedIn }) {
+function UserMenu() {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectors.getIsLoggedIn);
   const [useLogout, { isLoading }] = useLogoutMutation();
   const handleClick = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -33,10 +35,4 @@ function UserMenu({ isLoggedIn }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLoggedIn: state.auth.isLoggedIn,
-  };
-};
-
-export default connect(mapStateToProps)(UserMenu);
+export default UserMenu;

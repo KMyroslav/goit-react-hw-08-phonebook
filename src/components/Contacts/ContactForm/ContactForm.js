@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import shortid from "shortid";
 import Loader from "react-loader-spinner";
-import { useAddContactMutation } from "../../../redux/contactsSlice";
+import { useAddContactMutation } from "../../../redux/operations";
 
 function ContactForm() {
   const [name, setName] = useState("");

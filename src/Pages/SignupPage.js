@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useSignupMutation } from "../redux/contactsSlice";
+import { useSignupMutation } from "../redux/operations";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "../redux/reducers";
+import { setCredentials } from "../redux/slices";
 
 export default function SignupPage() {
   const dispatch = useDispatch();

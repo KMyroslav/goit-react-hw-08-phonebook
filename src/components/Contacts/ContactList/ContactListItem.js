@@ -1,5 +1,5 @@
 import Loader from "react-loader-spinner";
-import { useDeleteContactMutation } from "../../../redux/contactsSlice";
+import { useDeleteContactMutation } from "../../../redux/operations";
 
 export default function ContactListItem({ el }) {
   const [deleteContact, { isLoading: deleteIsLoading }] =

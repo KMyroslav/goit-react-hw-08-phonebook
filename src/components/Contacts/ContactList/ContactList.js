@@ -1,11 +1,11 @@
-import propTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
-import { useGetContactsQuery } from "../../../redux/contactsSlice";
-import actions from "../../../redux/actions";
+import { useGetContactsQuery } from "../../../redux/operations";
 import ContactListItem from "./ContactListItem";
+import selectors from "../../../redux/selectors";
 
-function ContactList({ filter }) {
+function ContactList() {
+  const filter = useSelector(selectors.getFilter);
   const { data, isLoading: contactsIsLoading } = useGetContactsQuery();
   return (
     <div>
@@ -22,20 +22,4 @@ function ContactList({ filter }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    filter: state.filter,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFilter: (filter) => dispatch(actions.setFilter(filter)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-
-ContactList.propTypes = {
-  filter: propTypes.string.isRequired,
-};
+export default ContactList;
