@@ -25,13 +25,14 @@ export default function SignupPage() {
   };
 
   return (
-    <div>
-      <form name="signup_form" autoComplete="on" onSubmit={handleSubmit}>
+    <form name="signup_form" autoComplete="on" onSubmit={handleSubmit}>
+      <div className="form-group row mb-2">
         <label>
           Name
           <input
             type="text"
             name="name"
+            className="form-control"
             value={name}
             autoFocus
             onChange={(e) => setName(e.target.value)}
@@ -43,6 +44,7 @@ export default function SignupPage() {
           <input
             type="email"
             name="email"
+            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -53,13 +55,15 @@ export default function SignupPage() {
           <input
             type="password"
             name="password"
+            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Sign Up
+      </button>
+    </form>
   );
 }

@@ -9,6 +9,7 @@ export default function ContactListItem({ el }) {
       {el.name}: {el.phone}
       <button
         type="button"
+        className="btn btn-danger"
         data-id={el.id}
         onClick={() => {
           deleteContact(el.id);

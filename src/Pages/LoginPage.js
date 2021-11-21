@@ -22,13 +22,14 @@ export default function LoginPage() {
     setPassword("");
   };
   return (
-    <div>
-      <form name="login_form" autoComplete="on" onSubmit={handleSubmit}>
+    <form name="login_form" autoComplete="on" onSubmit={handleSubmit}>
+      <div className="form-group row mb-2">
         <label>
           Email
           <input
             type="email"
             name="email"
+            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -39,13 +40,16 @@ export default function LoginPage() {
           <input
             type="password"
             name="password"
+            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+      </div>
 
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+      <button type="submit" className="btn btn-primary">
+        Log In
+      </button>
+    </form>
   );
 }

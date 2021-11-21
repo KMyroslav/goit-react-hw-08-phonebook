@@ -18,7 +18,12 @@ function UserMenu() {
       <Link to="/">Home </Link>
       <Link to="/contacts"> Contacts </Link>
       {isLoggedIn ? (
-        <button type="button" onClick={handleClick} disabled={isLoading}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleClick}
+          disabled={isLoading}
+        >
           Log Out
         </button>
       ) : (

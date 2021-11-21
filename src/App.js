@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="container">
-      <BrowserRouter>
+      <BrowserRouter basename="/goit-react-hw-08-phonebook">
         <UserMenu />
         <Routes>
           <Route path="/" element={<HomePage />} />
