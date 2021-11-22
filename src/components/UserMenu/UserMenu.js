@@ -22,7 +22,7 @@ function UserMenu() {
       expand="lg"
       bg="dark"
       variant="dark"
-      className="px-4"
+      className="px-4 rounded-pill"
     >
       <Navbar.Brand>Phonebook</Navbar.Brand>
       <Nav className="mr-auto">
