@@ -13,8 +13,10 @@ export default function HomePage() {
     bodyEl.style.backgroundColor = "#000";
     if (document.getElementById("c")) {
       let intervalID,
-        timeoutID = null;
-      window.requestAnimFrame = (function () {
+        timeoutID,
+        animationID,
+        loopAnimationId = null;
+      animationID = window.requestAnimFrame = (function () {
         return (
           window.requestAnimationFrame ||
           window.webkitRequestAnimationFrame ||
@@ -147,7 +149,7 @@ export default function HomePage() {
       }
 
       var loop = function () {
-        window.requestAnimFrame(loop);
+        loopAnimationId = window.requestAnimFrame(loop);
         if (trail) {
           ctx.fillStyle = "rgba(0,0,0,.1)";
           ctx.fillRect(0, 0, cw, ch);
@@ -168,9 +170,11 @@ export default function HomePage() {
       loop();
 
       return () => {
-        clearInterval(intervalID);
-        clearInterval(timeoutID);
         bodyEl.style.backgroundColor = "#fff";
+        window.clearInterval(intervalID);
+        window.clearTimeout(timeoutID);
+        window.cancelAnimationFrame(animationID);
+        window.cancelAnimationFrame(loopAnimationId);
         c.removeEventListener("mousedown", orbGo, false);
         c.removeEventListener("mousemove", orbGo, false);
         c.removeEventListener("mousedown", turnOnMove, false);
