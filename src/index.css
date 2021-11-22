@@ -1,16 +1,28 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.mr-auto {
+  margin-right: auto;
 }
 
-h1,
-h2 {
-  margin-top: 25px;
-  margin-bottom: 15px;
+.badge-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border: 1px solid transparent;
+}
+
+.header {
+  position: relative;
+}
+.header::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -100;
+  content: "";
+  height: 100%;
+  display: inline-block;
+  border-bottom: 0.5px solid #fff;
+  width: 100vw;
+  background-color: rgba(47, 79, 79, 0.5);
 }
 
 canvas {
@@ -25,34 +37,20 @@ canvas {
   z-index: -1000;
 }
 
-#root {
-  width: 100vw;
+.home-wrapper {
+  padding-bottom: 0;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 10px 20px;
-  max-width: 600px;
+.home-header {
+  padding-left: 0.5rem;
+  margin-bottom: 2rem;
 }
 
-form {
-  margin-bottom: 10px;
+.home-list {
+  padding-left: 5rem;
+  margin-bottom: 2rem;
 }
 
-button {
-  margin-left: 10px;
+.home-text-background {
+  margin-bottom: 0;
 }
-
-label {
-  margin-left: 5px;
-  margin-bottom: 5px;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.input-wrapper {
-  display: inline-block;
-} */

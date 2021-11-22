@@ -23,6 +23,7 @@ export default function LoginPage() {
   };
   return (
     <form name="login_form" autoComplete="on" onSubmit={handleSubmit}>
+      <h2>Log In</h2>
       <div className="form-group row mb-2">
         <label>
           Email

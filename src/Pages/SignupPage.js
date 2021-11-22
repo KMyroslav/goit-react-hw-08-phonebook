@@ -26,6 +26,7 @@ export default function SignupPage() {
 
   return (
     <form name="signup_form" autoComplete="on" onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
       <div className="form-group row mb-2">
         <label>
           Name
