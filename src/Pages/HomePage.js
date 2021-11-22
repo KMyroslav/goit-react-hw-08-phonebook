@@ -28,6 +28,7 @@ export default function HomePage() {
       document.onselectstart = function () {
         return false;
       };
+
       var c = document.getElementById("c");
       var ctx = c.getContext("2d");
       var dpr = window.devicePixelRatio;
@@ -41,12 +42,8 @@ export default function HomePage() {
       };
       ctx.lineCap = "round";
       var orbs = [];
-      // var orbCount = 30;
-      // var radius;
 
-      // var trailCB = document.getElementById("trail");
       var trail = true;
-      // var clearer = document.getElementById("clear");
 
       function createOrb(mx, my) {
         var dx = cw / 2 - mx;
@@ -61,7 +58,6 @@ export default function HomePage() {
           hue: 0,
           colorAngle: 0,
           angle: angle + Math.PI / 2,
-          //size: .5+dist/250,
           size: rand(1, 3) / 2,
           centerX: cw / 2,
           centerY: ch / 2,
@@ -134,10 +130,6 @@ export default function HomePage() {
         c.removeEventListener("mousemove", orbGo, false);
       }
 
-      // function toggleTrails() {
-      //   trail = trailCB.checked;
-      // }
-
       function clear() {
         orbs = [];
       }
@@ -145,8 +137,7 @@ export default function HomePage() {
       c.addEventListener("mousedown", orbGo, false);
       c.addEventListener("mousedown", turnOnMove, false);
       c.addEventListener("mouseup", turnOffMove, false);
-      // trailCB.addEventListener("change", toggleTrails, false);
-      setInterval(clear, 60000);
+      const interval = setInterval(clear, 60000);
 
       var count = 100;
       while (count--) {
@@ -173,8 +164,15 @@ export default function HomePage() {
       };
 
       loop();
+
+      return () => {
+        clearInterval(interval);
+        bodyEl.style.backgroundColor = "#fff";
+        c.removeEventListener("mousedown", orbGo, false);
+        c.removeEventListener("mousedown", turnOnMove, false);
+        c.removeEventListener("mouseup", turnOffMove, false);
+      };
     }
-    return (bodyEl.style.backgroundColor = "#fff");
   }, []);
 
   return (
