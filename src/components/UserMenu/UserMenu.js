@@ -62,39 +62,4 @@ function UserMenu() {
   );
 }
 
-//  return (
-//    <div className="header nav nav-tabs">
-//      <div className="nav-item">
-//        <NavLink to="/" className="nav-link">
-//          Home
-//        </NavLink>
-//      </div>
-//      <div className="nav-item">
-//        <NavLink to="/contacts" className="nav-link">
-//          Contacts
-//        </NavLink>
-//      </div>
-
-//      {isLoggedIn ? (
-//        <button
-//          type="button"
-//          className="btn btn-secondary"
-//          onClick={handleClick}
-//          disabled={isLoading}
-//        >
-//          Log Out
-//        </button>
-//      ) : (
-//        <ul>
-//          <li>
-//            <NavLink to="/login"> Log In </NavLink>
-//          </li>
-//          <li>
-//            <NavLink to="/signup"> Sign up</NavLink>
-//          </li>
-//        </ul>
-//      )}
-//    </div>
-//  );
-
 export default UserMenu;
