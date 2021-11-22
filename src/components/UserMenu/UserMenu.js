@@ -26,16 +26,13 @@ function UserMenu() {
     >
       <Navbar.Brand>Phonebook</Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link>
-          <NavLink to="/" className="nav-link">
-            Home
-          </NavLink>
-        </Nav.Link>
-        <Nav.Link>
-          <NavLink to="/contacts" className="nav-link">
-            Contacts
-          </NavLink>
-        </Nav.Link>
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
+
+        <NavLink to="/contacts" className="nav-link">
+          Contacts
+        </NavLink>
       </Nav>
 
       {isLoggedIn ? (
