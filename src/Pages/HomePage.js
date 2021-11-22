@@ -189,8 +189,10 @@ export default function HomePage() {
 
       {isLoggedIn ? (
         <>
-          <h2>We are glad to see you again {userName}!</h2>
-          <p>
+          <h2 className="home-list">
+            We are glad to see you again {userName}!
+          </h2>
+          <p className="home-list">
             Want to jump straight to{"  "}
             <button
               type="button"
@@ -222,7 +224,8 @@ export default function HomePage() {
               onClick={() => navigate("/signup")}
             >
               Sign Up
-            </button>
+            </button>{" "}
+            to start using personal contact app.
           </li>
         </ul>
       )}

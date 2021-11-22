@@ -36,8 +36,8 @@ function UserMenu() {
       </Nav>
 
       {isLoggedIn ? (
-        <div className="d-flex justify-content-baseline">
-          <span className="text-light h3 mx-2 my-0">Welcome {userName}!</span>
+        <div className="d-flex align-items-center">
+          <span className="text-light user-name">Welcome {userName}!</span>
           <Button
             variant="secondary"
             onClick={handleClick}

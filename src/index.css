@@ -66,3 +66,14 @@ canvas {
 .home-text-background {
   margin-bottom: 0;
 }
+
+.user-name {
+  font-size: large;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 500px) {
+  .user-name {
+    display: none;
+  }
+}
