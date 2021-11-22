@@ -12,6 +12,8 @@ export default function HomePage() {
     const bodyEl = document.body;
     bodyEl.style.backgroundColor = "#000";
     if (document.getElementById("c")) {
+      let intervalID,
+        timeoutID = null;
       window.requestAnimFrame = (function () {
         return (
           window.requestAnimationFrame ||
@@ -20,7 +22,7 @@ export default function HomePage() {
           window.oRequestAnimationFrame ||
           window.msRequestAnimationFrame ||
           function (a) {
-            window.setTimeout(a, 1e3 / 60);
+            timeoutID = window.setTimeout(a, 1e3 / 60);
           }
         );
       })();
@@ -137,7 +139,7 @@ export default function HomePage() {
       c.addEventListener("mousedown", orbGo, false);
       c.addEventListener("mousedown", turnOnMove, false);
       c.addEventListener("mouseup", turnOffMove, false);
-      const interval = setInterval(clear, 60000);
+      intervalID = setInterval(clear, 60000);
 
       var count = 100;
       while (count--) {
@@ -166,9 +168,11 @@ export default function HomePage() {
       loop();
 
       return () => {
-        clearInterval(interval);
+        clearInterval(intervalID);
+        clearInterval(timeoutID);
         bodyEl.style.backgroundColor = "#fff";
         c.removeEventListener("mousedown", orbGo, false);
+        c.removeEventListener("mousemove", orbGo, false);
         c.removeEventListener("mousedown", turnOnMove, false);
         c.removeEventListener("mouseup", turnOffMove, false);
       };
