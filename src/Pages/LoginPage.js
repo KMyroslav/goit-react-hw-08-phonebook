@@ -22,35 +22,42 @@ export default function LoginPage() {
     setPassword("");
   };
   return (
-    <form name="login_form" autoComplete="on" onSubmit={handleSubmit}>
-      <h2>Log In</h2>
-      <div className="form-group row mb-2">
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+    <div className="form-wrapper">
+      <form
+        className="general-form"
+        name="login_form"
+        autoComplete="on"
+        onSubmit={handleSubmit}
+      >
+        <h2>Log In</h2>
+        <div className="form-group row mb-2">
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-      </div>
+          <label>
+            Password
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
 
-      <button type="submit" className="btn btn-primary">
-        Log In
-      </button>
-    </form>
+        <button type="submit" className="btn btn-primary">
+          Log In
+        </button>
+      </form>
+    </div>
   );
 }

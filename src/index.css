@@ -38,6 +38,17 @@ canvas {
   cursor: pointer;
 }
 
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.general-form {
+  margin-top: 20px;
+  max-width: 420px;
+}
+
 .home-wrapper {
   padding-bottom: 0;
 }
