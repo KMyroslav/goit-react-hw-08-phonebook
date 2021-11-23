@@ -6,6 +6,24 @@
   color: #fff;
   background-color: #0d6efd;
   border: 1px solid transparent;
+  z-index: 10;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.badge-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border: 1px solid transparent;
+  z-index: 10;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.badge-secondary:hover {
+  background-color: #5c636a;
 }
 
 .header {
