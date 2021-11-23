@@ -11,6 +11,8 @@ export default function HomePage() {
   useEffect(() => {
     const bodyEl = document.body;
     bodyEl.style.backgroundColor = "#000";
+    bodyEl.style.overflow = "hidden";
+
     if (document.getElementById("c")) {
       let intervalID,
         timeoutID,
@@ -127,25 +129,30 @@ export default function HomePage() {
       }
 
       function turnOnMove() {
-        c.addEventListener("mousemove", orbGo, false);
+        document.body.addEventListener("mousemove", orbGo, false);
+        document.body.addEventListener("touchmove", orbGo, false);
       }
 
       function turnOffMove() {
-        c.removeEventListener("mousemove", orbGo, false);
+        document.body.removeEventListener("mousemove", orbGo, false);
+        document.body.removeEventListener("touchmove", orbGo, false);
       }
 
       function clear() {
         orbs = [];
       }
 
-      c.addEventListener("mousedown", orbGo, false);
-      c.addEventListener("mousedown", turnOnMove, false);
-      c.addEventListener("mouseup", turnOffMove, false);
+      document.body.addEventListener("mousedown", orbGo, false);
+      document.body.addEventListener("mousedown", turnOnMove, false);
+      document.body.addEventListener("mouseup", turnOffMove, false);
+      document.body.addEventListener("touchstart", orbGo, false);
+      document.body.addEventListener("touchstart", turnOnMove, false);
+      document.body.addEventListener("touchend", turnOffMove, false);
       intervalID = setInterval(clear, 60000);
 
       var count = 100;
       while (count--) {
-        createOrb(cw / 2, ch / 2 + count * 2);
+        createOrb(cw / 2, ch / 2 + count * 9);
       }
 
       var loop = function () {
@@ -171,14 +178,19 @@ export default function HomePage() {
 
       return () => {
         bodyEl.style.backgroundColor = "#fff";
+        bodyEl.style.overflow = "visible";
         window.clearInterval(intervalID);
         window.clearTimeout(timeoutID);
         window.cancelAnimationFrame(animationID);
         window.cancelAnimationFrame(loopAnimationId);
-        c.removeEventListener("mousedown", orbGo, false);
-        c.removeEventListener("mousemove", orbGo, false);
-        c.removeEventListener("mousedown", turnOnMove, false);
-        c.removeEventListener("mouseup", turnOffMove, false);
+        document.body.removeEventListener("mousedown", orbGo, false);
+        document.body.removeEventListener("mousemove", orbGo, false);
+        document.body.removeEventListener("mousedown", turnOnMove, false);
+        document.body.removeEventListener("mouseup", turnOffMove, false);
+        document.body.removeEventListener("touchstart", orbGo, false);
+        document.body.removeEventListener("touchmove", orbGo, false);
+        document.body.removeEventListener("touchstart", turnOnMove, false);
+        document.body.removeEventListener("touchend", turnOffMove, false);
       };
     }
   }, []);
@@ -230,7 +242,9 @@ export default function HomePage() {
         </ul>
       )}
       <p className="home-text-background text-muted text-center">
-        Or take some time to play with our magic background :)
+        Or take some time to play with our magic background
+        <br />
+        (it reloads every minute)
       </p>
       <canvas id="c"></canvas>
     </div>
