@@ -152,7 +152,7 @@ export default function HomePage() {
 
       var count = 100;
       while (count--) {
-        createOrb(cw / 2, ch / 2 + count * 9);
+        createOrb(cw / 2, ch / 2 + count * 6);
       }
 
       var loop = function () {
@@ -242,7 +242,8 @@ export default function HomePage() {
         </ul>
       )}
       <p className="home-text-background text-muted text-center">
-        Or take some time to play with our magic background
+        Or take some time to play with our magic background - tap anywhere on
+        the screen
         <br />
         (it reloads every minute)
       </p>
