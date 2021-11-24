@@ -8,13 +8,12 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [useSignup] = useSignupMutation();
+  const signup = useSignupMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const userData = await useSignup({ name, email, password }).unwrap();
+      const userData = await signup({ name, email, password }).unwrap();
       dispatch(setCredentials(userData));
     } catch (err) {
       console.log(err);

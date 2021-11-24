@@ -9,11 +9,10 @@ function UserMenu() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectors.getIsLoggedIn);
   const userName = useSelector(selectors.getUserName);
-  const [useLogout, { isLoading }] = useLogoutMutation();
+  const [logout, { isLoading }] = useLogoutMutation();
   const navigate = useNavigate();
   const handleClick = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useLogout();
+    logout();
     dispatch(setLogout());
   };
   return (

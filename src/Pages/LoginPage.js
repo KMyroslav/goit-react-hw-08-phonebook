@@ -7,13 +7,12 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [useLogin] = useLoginMutation();
+  const [login] = useLoginMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const userData = await useLogin({ email, password }).unwrap();
+      const userData = await login({ email, password }).unwrap();
       dispatch(setCredentials(userData));
     } catch (err) {
       console.log(err);
